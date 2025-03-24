@@ -10,9 +10,11 @@ code = {
 
 def encrypt(plaintext):
     ciphertext = ""
+    #ciphertext = " ".join([str(code[char]) if char in code.keys() else char for char in plaintext.lower()])
+    ciphertext = "".join([str(code.get(char,char)) for char in plaintext.lower()])
     return ciphertext
 
-assert encrypt("hello!") == "8 5 12 12 15 !", f"Got {encrypt('hello')=}"
+assert encrypt("hello") == "85121215", f"Got {encrypt('hello')=}"
 
 # Get a message from the user
 message = input("What is your message? ")
